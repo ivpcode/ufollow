@@ -1,28 +1,28 @@
 import $ from "jquery";
 
-import './router';
+import './libs/router';
 
-import './lit-components/loader';
-import SSCtxMenu from "./lit-components/ss-context-menu";
-import './lit-components/ss-design-row';
-import './lit-components/ss-stl-viewer';
-import './lit-components/ss-remote-video-viewer';
+import './ui-components/loader';
+import './ui-components/post';
+import IVPCtxMenu from "./ui-components/context-menu";
 
-import './lit-dialogs/ss-dialog-yes-no';
-import './lit-dialogs/ss-dialog-design-edit';
+import './ui-components/main-menu';
+import './ui-dialogs/ss-dialog-yes-no';
 
 
-import "./lit-sections/ss-section-menu";
-import "./lit-sections/ss-section-designs";
-import "./lit-sections/ss-section-gcode-viewer";
-import './lit-sections/ss-section-printer-status';
+// import "./ui-sections/ss-section-menu";
+// import "./ui-sections/ss-section-designs";
+// import "./ui-sections/ss-section-gcode-viewer";
+// import './ui-sections/ss-section-printer-status';
 
 
 
 $(document).ready(()=>{
+    $("body").removeClass("hidden");
+    return;
    let SKEY = localStorage.getItem("SKEY");
    if (SKEY != null && SKEY!=""){
-       DoIO("/api/solidshape/v1/init",{})
+       DoIO("/api/v1/init",{})
            .done(()=>{
                $("body").removeClass("hidden");
            })
@@ -36,16 +36,7 @@ $(document).ready(()=>{
 });
 
 $(document).ready(()=>{
-    $(".row1 .user").click((evt)=>{
-        SSCtxMenu.Show($(evt.target).parent(),["Account", "Logout"], (item) => {
-            if (item == "Account") {
-            }
-            else if (item == "Logout") {
-                localStorage.setItem("SKEY","");
-                window.location.href = "/login.html";
-            }
-        });
-    });
+
 });
 
 window.router = new SSRouter({
@@ -55,9 +46,6 @@ window.router = new SSRouter({
 
 window.router
 
-    // .add(/models\/(.*)/, (id) => {
-    //     alert(`models: ${id}`);
-    // })
     .add(/models/, () => {
         $("#CONTENT").html("<ss-section-designs>");
         $("#SECTION_TITLE").text("Elenco modelli");
@@ -85,9 +73,7 @@ window.router
     })
 
     .add('', () => {
-        $("#CONTENT").html("<ss-section-menu>")
-        $("#SECTION_TITLE").text("Pannello di controllo");
-        $("#SECTION_SUB_TITLE").text("Seleziona una funzionalità");
+
     });
 
 function DoIO(Method, Data, _Timeout, PercentCallBack) {
@@ -123,7 +109,7 @@ function DoIO(Method, Data, _Timeout, PercentCallBack) {
             }
             return xhr;
         },
-        url: "https://www.solidshape.it"+Method,
+        url: "https://www.ufollow.it"+Method,
         method: "post",
         data: _Data,
         timeout: _Timeout,

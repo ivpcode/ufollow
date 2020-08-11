@@ -1,0 +1,86 @@
+@import "/css/pure-css.css";
+@import "/css/_defines.scss";
+@import "/css/_mixins.scss";
+
+
+.pure-button-primary, .pure-button-selected, a.pure-button-primary, a.pure-button-selected {
+	background-color: #fff;
+	color: rgb(138, 150, 163);
+
+	&.outline {
+		background-color: white;
+		color:#ff8700;
+		border: 1px solid #ff8700;
+
+		&:hover {
+			background: lighten(#ff8700, 15%);
+			color: white;
+		}
+	}
+}
+
+
+body {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #fff;
+	color: $text-color;
+
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	font-family: Raleway, sans-serif;
+	font-weight: 500;
+	overflow-y: scroll;
+	font-family: Raleway, sans-serif;
+}
+
+.modal-dialog {
+	max-width: 50%;
+	margin-left: -25%;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	width: 100%;
+	background: white;
+	z-index: 2;
+	border-bottom: 1px solid #d0d0d0;
+	display:none;
+	padding: 0 10px;
+
+	@include device-screen(desktop) {
+		display: block;
+	}
+}
+
+.content{
+	height:100%;
+	width:100%;
+	position:relative;
+
+	> * {
+		display:block;
+		position: relative;
+		background-color: white;
+		width: $desktop-max-width;
+		max-width: $desktop-max-width;
+		margin: 30px auto;
+		margin-bottom: 90px;
+		min-height: 75vh;
+
+	}
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px solid #d0d0d0;
+	padding: 0 10px;
+
+	@include device-screen(desktop) {
+		display: none;
+	}
+}

@@ -1,0 +1,22 @@
+@mixin device-screen ($device) {
+
+	// $breakpoint is simply a variable that can have several values
+
+	@if $device==tablet {
+		@media only screen and (min-width: 586px) {
+			@content;
+		}
+	}
+
+	@if $device==desktop {
+		@media only screen and (min-width: 768px) {
+			@content;
+		}
+	}
+
+	@if $device==desktop-wide {
+		@media only screen and (min-width: 1280px) {
+			@content;
+		}
+	}
+}

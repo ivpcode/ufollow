@@ -1,0 +1,28 @@
+@import "../css/uikit.scss";
+
+ivp-main-menu {
+	display: flex;
+	justify-content: space-between;
+	max-width: $desktop-max-width;
+	margin: 0 auto;
+
+	a {
+		align-items: center;
+		padding: 8px;
+
+		.lnr {
+			fill: currentColor;
+			width: 26px;
+			height: 26px;
+			color: $text-color;
+
+			&:hover {
+				transform: scale(1.1);
+			}
+
+			&.active {
+				color: $active-element-color;
+			}
+		}
+	}
+}
