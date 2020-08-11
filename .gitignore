@@ -1,0 +1,5 @@
+/front/.cache/
+/front/dist/
+/front/node_modules/
+/server/.vscode/
+*.DS_Store

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Exe": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\solidshape\\api"
+    }
+  }
+}

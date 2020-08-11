@@ -1,0 +1,107 @@
+@import "./pure-css.css";
+
+.pure-button-primary, .pure-button-selected, a.pure-button-primary, a.pure-button-selected {
+	background-color: #ff8700;
+	color: #fff;
+
+	&.outline {
+		background-color: white;
+		color:#ff8700;
+		border: 1px solid #ff8700;
+
+		&:hover {
+			background: lighten(#ff8700, 15%);
+			color: white;
+		}
+	}
+}
+
+
+body {
+	background-color: white;
+
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	font-family: Raleway, sans-serif;
+	font-weight: 300;
+	overflow-y: scroll;
+
+	&::after {
+		content: "";
+		background-image: url("../images/login-bkg.jpg");
+		background-position: bottom right;
+		background-size: contain;
+		background-repeat: no-repeat;
+		opacity: 0.5;
+		top: 0;
+		left: 0;
+		bottom: -20%;
+		right: 0;
+		position: absolute;
+		z-index: -1;
+	}
+}
+
+.main-col {
+	padding: 0 5%;
+	max-width: 750px;
+	margin: auto;
+	.col {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 75vh;
+
+		&.left {
+			align-self: self-start;
+
+			.logo {
+				margin-bottom: 35%;
+			}
+		}
+
+		&.right .pure-form{
+			padding:60px;
+			background-color: #ffffffcc;
+			border: 1px solid #e2e2e2;
+		}
+		.pure-control-group {
+			margin-bottom: 20px;
+		}
+		.pure-form-message.error-text {
+			text-align: center;
+			margin-top: 10px;
+			visibility: hidden;
+			color: red;
+		}
+	}
+}
+
+@media screen and (max-width: 1023px){
+
+	body {
+		&::after {
+			bottom: 0;
+		}
+	}
+
+	.main-col {
+		.col {
+			height: auto;
+
+			&.left {
+				.logo {
+					text-align: center;
+					margin-bottom: 10%;
+				}
+			}
+			
+			&.left > div { margin:auto; margin-top: 5vh; text-align: center; }
+			&.right > div { margin:auto;}
+			&.right .pure-form{
+				padding:20px;
+			}
+		}
+	}
+}
