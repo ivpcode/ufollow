@@ -10,6 +10,7 @@ import sanitizeHtml from "sanitize-html"
 
 import IVPLoader from "../ui-components/loader";
 import IVPImageUploader from "../ui-components/image-uploader";
+import {Sortable} from "@shopify/draggable";
 
 
 
@@ -24,6 +25,7 @@ class SectionEditPost extends LitElement {
         super();
         this.jqContainer = $("");
         this.Editor = null;
+        this.hUpdateMedia = null;
     }
 
     render() {
@@ -81,7 +83,6 @@ class SectionEditPost extends LitElement {
         let ht = null;
         this.Editor.subscribe('editableInput',  (event, editable) => {
             // Do some work
-       // $(".editor").keyup(()=>{
             clearTimeout(ht);
             ht = setTimeout(()=>{
                 this.PreviewUpdateText();
@@ -89,6 +90,18 @@ class SectionEditPost extends LitElement {
         });
 
         tippy("[data-tippy-content]");
+
+        const sortable = new Sortable($(this).find(".media")[0], {
+            draggable: 'ivp-image-uploader',
+        });
+
+        sortable.on('sortable:sorted', () => {
+            clearTimeout(this.hUpdateMedia);
+            this.hUpdateMedia = setTimeout(()=>{
+                this.PreviewUpdateMedia();
+            },500);
+
+        });
     }
 
     PreviewUpdateText() {
@@ -108,6 +121,16 @@ class SectionEditPost extends LitElement {
         $(this).find(".preview ivp-post").attr("text",text);
     }
 
+    PreviewUpdateMedia() {
+        let vImages = [];
+        $(this).find(".media ivp-image-uploader").each((i,el)=>{
+            if ($(el).hasClass("draggable-mirror") == false &&
+                $(el).hasClass("draggable--original") == false )
+                vImages.push(el.src);
+        })
+        $(this).find("ivp-post")[0].images =vImages;
+    }
+ 
     AddMedia() {
         let input = $(this).find(".media input");
         input.off().on("change",(event)=>{
@@ -118,14 +141,11 @@ class SectionEditPost extends LitElement {
                let img = new IVPImageUploader();
                reader.onload = (evt) => {
                    img.src = evt.target.result;
+                   $(img).attr("src",evt.target.result);
                    $(this).find(".media .add-media").before(img);
                    $(this).find(".media").removeClass("hidden");
 
-                   let vImages = [];
-                   $(this).find(".media ivp-image-uploader").each((i,el)=>{
-                       vImages.push(el.src);
-                   })
-                   $(this).find("ivp-post")[0].images =vImages;
+                   this.PreviewUpdateMedia();
                };
                reader.readAsDataURL(files[i]);
            }
@@ -133,6 +153,7 @@ class SectionEditPost extends LitElement {
         input.click();
 
     }
+
 
 
 }

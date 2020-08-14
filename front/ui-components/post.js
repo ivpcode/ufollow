@@ -1,5 +1,6 @@
 import {html, LitElement} from "lit-element";
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js'
+import {Sortable} from '@shopify/draggable';
 
 import Types from "../libs/types"
 import IVPCtxMenu from "./context-menu";
@@ -32,7 +33,6 @@ class IVPPost extends LitElement {
         this.publish_timestamp = new Date();
         this.likes_count = 0;
 
-        this.ImageContainerWidth = 600;
         this.mode = "";
         this.CurrentMediaIndex = 0;
     }
@@ -102,10 +102,7 @@ class IVPPost extends LitElement {
         super.firstUpdated();
 
         let ImageContainer = this.getElementsByClassName("image-container");
-        console.log (ImageContainer[0].clientWidth);
-        this.ImageContainerWidth = ImageContainer[0].clientWidth;
-        $(ImageContainer[0]).css("height", (this.ImageContainerWidth*1.05) +"px");
-        this.update();
+        $(ImageContainer[0]).css("height", (ImageContainer[0].clientWidth*1.05) +"px");
     }
 
     updated(changedProperties) {
@@ -129,7 +126,6 @@ class IVPPost extends LitElement {
         oImg.onload = ()=>{
             let ImageContainer = this.getElementsByClassName("image-container");
             console.log (ImageContainer[0].clientWidth);
-            this.ImageContainerWidth = ImageContainer[0].clientWidth;
             let sizing = "horz";
             if (oImg.naturalHeight / oImg.naturalWidth > ImageContainer[0].clientHeight / ImageContainer[0].clientWidth)
                 sizing = "vert";

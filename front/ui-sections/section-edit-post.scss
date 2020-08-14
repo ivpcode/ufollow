@@ -7,7 +7,9 @@ section-edit-post {
 		margin-bottom: 20px;
 		display: flex;
 		flex-wrap: wrap;
-
+		&:focus {
+			outline: none;
+		}
 		a.add-media {
 			display: block;
 			background: #ECECEC;
@@ -30,7 +32,13 @@ section-edit-post {
 			border: 1px solid rgba($text-color-ultra-light, 0.3);
 			border-radius: 4px;
 
+			&.draggable-mirror {
+				opacity: 0.9;
+				border: 1px solid rgba($text-color-ultra-light, 0.8);
+			}
+
 		}
+
 	}
 
 	.text {
