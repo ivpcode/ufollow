@@ -1,0 +1,96 @@
+@import "/css/uikit.scss";
+
+
+section-edit-post {
+
+	.media {
+		margin-bottom: 20px;
+		display: flex;
+		flex-wrap: wrap;
+
+		a.add-media {
+			display: block;
+			background: #ECECEC;
+			border: 1px solid rgba($text-color-ultra-light, 0.3);
+			height: 120px;
+			width: 80px;
+			text-align: center;
+			line-height: 120px;
+			font-size: 30px;
+			text-decoration: none;
+			color: $text-color-light;
+			border-radius: 4px;
+			margin-bottom: 5px;
+		}
+
+		ivp-image-uploader {
+			height: 120px;
+			margin-right: 5px;
+			margin-bottom: 5px;
+			border: 1px solid rgba($text-color-ultra-light, 0.3);
+			border-radius: 4px;
+
+		}
+	}
+
+	.text {
+		margin-bottom: 20px;
+
+		.editor {
+			padding: 10px 20px;
+			border-radius: 4px;
+			outline: none;
+			font-size: 15px;
+			line-height: 25px;
+			color: $text-color-strong;
+			border: 1px solid rgba($text-color-ultra-light, 0.003);
+
+			&:focus {
+				outline: none;
+				border: 1px solid rgba($text-color-ultra-light, 0.3);
+			}
+
+			p {
+				margin: 0;
+				padding: 0;
+			}
+		}
+		.medium-editor-placeholder:after {
+			color: $text-color;
+		}
+	}
+
+	.actions {
+		display: flex;
+		margin-bottom: 20px;
+		border-bottom: 1px solid $border-color-light;
+		padding: 20px;
+		a {
+			margin-right: 15px;
+
+			.lnr {
+				width: 24px;
+				height: 24px;
+				fill: currentColor;
+				color: $text-color;
+
+				&:hover {
+					color:	$active-element-color;
+				}
+
+				&.lnr-picture {
+					width: 22px;
+					height: 22px;
+				}
+			}
+		}
+	}
+
+	.preview {
+		ivp-post {
+			display:block;
+			width: 600px;
+			margin: auto;
+		}
+	}
+}

@@ -1,7 +1,7 @@
-ss-ctx-menu {
+ivp-ctx-menu {
 	position: absolute;
-	top: 20px;
-	right: 50px;
+	top: 15px;
+	right: 10px;
 	background: white;
 	border: 1px solid #CCC;
 	padding: 12px 0;
@@ -18,14 +18,26 @@ ss-ctx-menu {
 			list-style-type: none;
 			text-align: left;
 			font-size:	15px;
-			line-height: 30px;
+			line-height: 35px;
 			color: #212529;
 			font-weight: 400;
 			letter-spacing: 0.5px;
-			padding: 0 30px;
+			padding: 0 20px;
 			cursor: pointer;
+			min-width: 150px;
+			color: #555;
+
 			&:hover {
 				background-color: #ff870010;
+				color: #222;
+			}
+
+			&.separator {
+				div.line {
+					height: 1px;
+					margin: 5px 0px;
+					border-bottom: 1px solid #DFDFDF;
+				}
 			}
 		}
 	}

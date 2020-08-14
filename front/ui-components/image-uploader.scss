@@ -1,0 +1,45 @@
+@import "/css/uikit.scss";
+
+ivp-image-uploader {
+	position: relative;
+	display: block;
+	overflow: hidden;
+
+	a {
+		position: absolute;
+		top:2px;
+		right: 2px;
+		z-index: 1;
+
+		.lnr {
+			display: block;
+			padding: 5px;
+			background-color: rgba(0,0,0,0.1);
+			border-radius: 32px;
+			width: 32px;
+			height: 32px;
+			color: white;
+			fill: currentColor;
+
+			&:hover {
+				background-color: rgba($active-element-color,0.5);
+
+			}
+		}
+	}
+
+	img {
+		height: 100%;
+		z-index: 0;
+	}
+
+	.progress {
+		position: absolute;
+		bottom:0;
+		height: 4px;
+		width: 100%;
+		background: $active-element-color;
+		z-index: 2;
+	}
+
+}

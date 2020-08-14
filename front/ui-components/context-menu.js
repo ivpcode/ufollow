@@ -17,13 +17,18 @@ class IVPCtxMenu extends LitElement {
     render() {
         return html`
             <ul>
-                ${this.items.map(i => html`<li name="${i}" @click=${this.OnClickItem}>${i}</li>`)}
+                ${this.items.map((i) => {
+                    if (i.Name == "separator")
+                        return html`<li class="separator"><div class="line"></div></li>`
+                    else
+                        return html`<li name="${i.Name}" @click=${this.OnClickItem}>${i.Text}</li>`
+                })}
             </ul>         
         `;
     }
 
     createRenderRoot() {
-        return this;
+         return this;
     }
 
     connectedCallback() {
@@ -39,7 +44,7 @@ class IVPCtxMenu extends LitElement {
 
     OnClickOutside() {
         $("body").unbind("click",this.OnClickOutside);
-        $("ss-ctx-menu").remove();
+        $("ivp-ctx-menu").remove();
     }
 
     OnClickItem(evt) {
@@ -49,8 +54,8 @@ class IVPCtxMenu extends LitElement {
     }
 
     static Show(jqParent,vItems,ItemSelectCallback) {
-        let isSon = jqParent.find("ss-ctx-menu").length>0;
-        $("ss-ctx-menu").remove();
+        let isSon = jqParent.find("ivp-ctx-menu").length>0;
+        $("ivp-ctx-menu").remove();
         if (isSon == true)
             return;
 

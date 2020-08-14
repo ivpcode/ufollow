@@ -1,6 +1,6 @@
 
-
-class SSRouter {
+let Paths = [];
+class IVPRouter {
     routes = [];
 
     mode = null;
@@ -12,10 +12,17 @@ class SSRouter {
         if (options.mode) this.mode = options.mode;
         if (options.root) this.root = options.root;
         this.listen();
+
+        for(let i=0;i<Paths.length;i++)
+            this.add(Paths[i].Path, Paths[i].Function);
     }
 
     add = (path, cb) => {
-        this.routes.push({ path, cb });
+        if (path == "")
+            this.routes.push({ path, cb });
+        else
+            this.routes.unshift({ path, cb })
+
         return this;
     };
 
@@ -89,7 +96,23 @@ class SSRouter {
             return false;
         });
     };
+
+    static Register(Path,Function) {
+        if (window.router == null) {
+            if (Path == "")
+                Paths.push({"Path": Path, "Function": Function})
+            else
+                Paths.unshift({"Path": Path, "Function": Function})
+        }
+        else
+            window.router.add(Path,Function);
+    }
 }
 
-export default SSRouter;
-window.SSRouter = SSRouter;
+export default IVPRouter;
+window.IVPRouter = IVPRouter;
+
+window.router = new IVPRouter({
+    mode: 'history',
+    root: '/'
+});

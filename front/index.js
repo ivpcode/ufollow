@@ -4,16 +4,16 @@ import './libs/router';
 
 import './ui-components/loader';
 import './ui-components/post';
+import './ui-components/image-uploader';
+
 import IVPCtxMenu from "./ui-components/context-menu";
 
 import './ui-components/main-menu';
 import './ui-dialogs/ss-dialog-yes-no';
 
 
-// import "./ui-sections/ss-section-menu";
-// import "./ui-sections/ss-section-designs";
-// import "./ui-sections/ss-section-gcode-viewer";
-// import './ui-sections/ss-section-printer-status';
+import "./ui-sections/section-home";
+import "./ui-sections/section-edit-post";
 
 
 
@@ -39,42 +39,7 @@ $(document).ready(()=>{
 
 });
 
-window.router = new SSRouter({
-    mode: 'history',
-    root: '/'
-});
 
-window.router
-
-    .add(/models/, () => {
-        $("#CONTENT").html("<ss-section-designs>");
-        $("#SECTION_TITLE").text("Elenco modelli");
-        $("#SECTION_SUB_TITLE").text("Carica o modifica i modelli in archivio");
-
-    })
-    .add(/printer\/status/, (id) => {
-        $("#CONTENT").html("<ss-section-printer-status>");
-        $("#SECTION_TITLE").text("Stato stampante");
-        $("#SECTION_SUB_TITLE").text("Carica o modifica i modelli in archivio");
-    })
-    .add(/gcode\/view/, () => {
-        $("#CONTENT").html("<ss-section-gcode-viewer>");
-        $("#SECTION_TITLE").text("Visualizzatore di GCode");
-        $("#SECTION_SUB_TITLE").text("Incolla il codice GCode e visualizzalo in 3D");
-    })
-
-    .add(/delete\/(.*)/, (id) => {
-        SsDialogYesNo.Show("Test yes no",()=>{ });
-    })
-
-    .add(/view/, (id) => {
-        let view = $("<ss-stl-viewer>");
-        $("body").append(view);
-    })
-
-    .add('', () => {
-
-    });
 
 function DoIO(Method, Data, _Timeout, PercentCallBack) {
     if (_Timeout == null)

@@ -60,15 +60,57 @@ header {
 	width:100%;
 	position:relative;
 
-	> * {
+	.section {
 		display:block;
 		position: relative;
 		background-color: white;
 		width: $desktop-max-width;
 		max-width: $desktop-max-width;
-		margin: 30px auto;
+		margin: 0 auto;
 		margin-bottom: 90px;
 		min-height: 75vh;
+
+		.section-header {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 1px solid $text-color-ultra-light;
+			margin-bottom: 25px;
+
+			> div, > a {
+				padding: 25px 0 10px 0;
+			}
+
+			svg {
+				width: 24px;
+				height: 24px;
+			}
+
+			.tab-menu {
+				padding-bottom: 0;
+				> div {
+					color: $text-color-strong;
+					text-transform: capitalize;
+					padding: 4px;
+					padding-bottom: 15px;
+					padding-top: 3px;
+					&.active {
+						border-bottom: 2px solid $active-element-color;
+					}
+				}
+			}
+
+			.navigation-title {
+				color: $text-color-strong;
+				text-transform: capitalize;
+				display:flex;
+				align-items: center;
+				text-decoration: none;
+				span {
+					font-size: 20px;
+					margin-left: 10px;
+				}
+			}
+		}
 
 	}
 }
