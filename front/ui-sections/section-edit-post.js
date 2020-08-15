@@ -44,15 +44,15 @@ class SectionEditPost extends LitElement {
             </div>            
             <div class="media hidden">  
                 <a class="add-media" href="#" @click="${this.AddMedia}">+</a>
-                <input type="file" multiple style="display:none"/>
+                <input type="file" multiple style="display:none" accept="image/*"/>
             </div>
             <div class="text">
                 <div placeholder="Scrivi qualcosa" class="editor"></div>
             </div>     
             <div class="actions">
-                <a href="#" @click="${this.AddMedia}" data-tippy-content="Aggiungi Immagine"><svg class="lnr lnr-picture"><use xlink:href="#lnr-picture"></use></svg></a>
-                <a href="#" @click="${this.AddMedia}" data-tippy-content="Aggiungi Video"><svg class="lnr lnr-film-play"><use xlink:href="#lnr-film-play"></use></svg></a>
-                <a href="#" @click="${this.AddMedia}" data-tippy-content="Registra ed aggiungi video"><svg class="lnr lnr-camera-video"><use xlink:href="#lnr-camera-video"></use></svg></a>                                
+                <a href="#" @click="${this.AddImages}" data-tippy-content="Aggiungi Immagine"><svg class="lnr lnr-picture"><use xlink:href="#lnr-picture"></use></svg></a>
+                <a href="#" @click="${this.AddVideo}" data-tippy-content="Aggiungi Video"><svg class="lnr lnr-film-play"><use xlink:href="#lnr-film-play"></use></svg></a>
+                <a href="#" @click="${this.RecordVideo}" data-tippy-content="Registra ed aggiungi video"><svg class="lnr lnr-camera-video"><use xlink:href="#lnr-camera-video"></use></svg></a>                                
             </div>       
             <div class="preview">
                 <ivp-post mode="PREVIEW"></ivp-post>
@@ -130,9 +130,11 @@ class SectionEditPost extends LitElement {
         })
         $(this).find("ivp-post")[0].images =vImages;
     }
- 
-    AddMedia() {
+
+    AddImages() {
         let input = $(this).find(".media input");
+        input.attr("multiple","true");
+        input.attr("accept","image/*");
         input.off().on("change",(event)=>{
            let files = event.target.files;
            for(let i=0;i<files.length;i++) {
@@ -151,11 +153,22 @@ class SectionEditPost extends LitElement {
            }
         });
         input.click();
-
     }
 
+    AddVideo() {
+        let input = $(this).find(".media input");
+        input.removeAttr("multiple","true");
+        input.attr("accept","video/*");
+        input.off().on("change",(event)=>{
+            let file = event.target.files[0];
+            let fileUrl = window.URL.createObjectURL(file);
+        });
+        input.click();
+    }
 
+    RecordVideo() {
 
+    }
 }
 
 customElements.define('section-edit-post', SectionEditPost);
