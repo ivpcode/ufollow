@@ -101,7 +101,11 @@ class SectionEditPost extends LitElement {
                 this.PreviewUpdateMedia();
             },500);
 
-        });
+		});
+		
+		setTimeout(()=>{
+			this.Editor.selectElement(document.querySelector('.medium-editor-element'))
+		},500)
     }
 
     PreviewUpdateText() {
