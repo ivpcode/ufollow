@@ -43,7 +43,7 @@ class SectionEditPost extends LitElement {
                 </div>
             </div>            
             <div class="media hidden">  
-                <a class="add-media" href="#" @click="${this.AddMedia}">+</a>
+                <a class="add-media" href="#" @click="${this.AddImages}">+</a>
                 <input type="file" multiple style="display:none" accept="image/*"/>
             </div>
             <div class="text">
