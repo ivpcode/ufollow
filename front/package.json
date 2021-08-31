@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "cssnano": "^5.0.8",
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "posthtml-expressions": "^1.4.5",
     "posthtml-include": "^1.4.3",
     "sass": "^1.26.10"
@@ -12,7 +14,7 @@
     "medium-editor": "^5.23.3",
     "moment": "^2.27.0",
     "momentjs": "^2.0.0",
-    "parcel-plugin-static-files-copy": "^2.5.0",
+    "postcss": "^8.3.6",
     "sanitize-html": "^1.27.3",
     "three": "^0.118.3",
     "three-gcode-loader": "^1.0.7",
