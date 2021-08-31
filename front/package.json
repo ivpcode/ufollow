@@ -33,5 +33,9 @@
         "staticOutDir": "/images"
       }
     ]
-  }
+  }, 
+   "scripts": {
+		  "build": ""
+	}
+  
 }
